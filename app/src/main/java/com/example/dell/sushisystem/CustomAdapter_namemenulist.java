@@ -8,20 +8,20 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by Dell on 11/10/2560.
- */
+import com.squareup.picasso.Picasso;
 
 public class CustomAdapter_namemenulist extends BaseAdapter {
 
     Context mContext;
     String[] strName;
-    int[] resId;
+    String[] price;
+    String[] image;
 
-    public CustomAdapter_namemenulist(Context context, String[] strName, int[] resId) {
+    public CustomAdapter_namemenulist(Context context, String[] strName, String[] price, String[] image) {
         this.mContext= context;
         this.strName = strName;
-        this.resId = resId;
+        this.price = price;
+        this.image = image;
     }
 
     public int getCount() {
@@ -47,8 +47,10 @@ public class CustomAdapter_namemenulist extends BaseAdapter {
         textView.setText(strName[position]);
 
         ImageView imageView = (ImageView)view.findViewById(R.id.imageView1);
-        imageView.setBackgroundResource(resId[position]);
+        Picasso.with(mContext).load(image[position]).into(imageView);
 
+        TextView textView1 = (TextView)view.findViewById(R.id.price);
+        textView1.setText(price[position]);
 
         return view;
     }

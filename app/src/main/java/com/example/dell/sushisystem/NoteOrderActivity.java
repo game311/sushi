@@ -20,22 +20,22 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CommentOrderActivity extends AppCompatActivity {
+public class NoteOrderActivity extends AppCompatActivity {
 
     String strName;
     String id_order;
     String note;
 
-    Button CommentOrder;
-    EditText comment_edit;
+    Button NoteOrder;
+    EditText note_edit;
 
-    String address="http://10.0.2.2/db_sushi/note_order.php";
+    String address="http://student.coe.phuket.psu.ac.th/~s5735512060/db_sushi/note_order.php";
     RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_comment_order);
+        setContentView(R.layout.activity_note_order);
 
         Intent intent = getIntent();
         strName = intent.getExtras().getString("namemenu_edit");
@@ -44,16 +44,16 @@ public class CommentOrderActivity extends AppCompatActivity {
         final TextView namemenu_edit = (TextView) findViewById(R.id.name_menu);
         namemenu_edit.setText(strName);
 
-        CommentOrder = (Button) findViewById(R.id.comment_button);
-        comment_edit = (EditText) findViewById(R.id.comment_edit);
+        NoteOrder = (Button) findViewById(R.id.note_button);
+        note_edit = (EditText) findViewById(R.id.note_edit);
 
         requestQueue = Volley.newRequestQueue(getApplicationContext());
         Toast.makeText(this, "" +id_order, Toast.LENGTH_SHORT).show();
 
-        CommentOrder.setOnClickListener(new View.OnClickListener() {
+        NoteOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                note = comment_edit.getText().toString();
+                note = note_edit.getText().toString();
                 //Toast msg = Toast.makeText(getBaseContext(),name,Toast.LENGTH_LONG);
                 //msg.show();
 

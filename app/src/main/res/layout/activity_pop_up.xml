@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dell.sushisystem.PopUpActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/linearLayout3">
+
+        <ImageView
+            android:id="@+id/ImageMenu"
+            android:layout_width="295dp"
+            android:layout_height="200dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="295dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="0dp"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout4"
+        android:weightSum="1"
+        android:layout_below="@+id/linearLayout3"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/NameMenu"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:text="ชื่อเมนู"
+            android:textSize="20sp"
+            android:textColor="#190707"
+            android:layout_weight="1.19"/>
+
+        <TextView
+            android:id="@+id/PriceMenu"
+            android:layout_width="95dp"
+            android:layout_height="match_parent"
+            android:text="ราคา"
+            android:textAlignment="textEnd"
+            android:textColor="#64dd17"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="250dp"
+            android:layout_marginLeft="22dp"
+            android:text="Description"
+            android:textColor="#64dd17"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:id="@+id/textView"/>
+
+
+        <TextView
+            android:id="@+id/Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_marginEnd="32dp"
+            android:textSize="16sp"
+            android:layout_below="@+id/textView"
+            android:layout_marginStart="30dp"/>
+
+    <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+        android:id="@+id/Count_Button"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        app:backGroundColor="@color/colorAccent"
+        app:finalNumber="20"
+        app:textSize="5sp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/Description"
+        android:layout_marginBottom="20dp"
+        android:layout_alignStart="@+id/Description">
+    </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
+
+    <Button
+        android:id="@+id/order_button"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignEnd="@+id/linearLayout4"
+        android:layout_alignTop="@+id/Count_Button"
+        android:layout_marginEnd="23dp"
+        android:background="@color/colorAccent"
+        android:text="Order"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"/>
+
+
+</RelativeLayout>

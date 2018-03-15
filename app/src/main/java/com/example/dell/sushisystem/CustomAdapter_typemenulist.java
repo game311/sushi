@@ -49,7 +49,6 @@ public class CustomAdapter_typemenulist extends BaseAdapter {
         ImageView imageView = (ImageView)view.findViewById(R.id.imageView1);
         imageView.setBackgroundResource(resId[position]);
 
-
         return view;
     }
 }

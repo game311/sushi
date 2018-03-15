@@ -1,10 +1,14 @@
 package com.example.dell.sushisystem;
 
+import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,26 +24,58 @@ public class Typefood8Activity extends AppCompatActivity {
 
     ListView lv;
     ArrayAdapter<String> adapter;
-    String address="http://10.0.2.2/sushidb/connect_typefood8.php";
+    String address="http://student.coe.phuket.psu.ac.th/~s5735512060/db_sushi/connect_typefood8.php";
     InputStream is=null;
     String line=null;
     String result=null;
-    String[] data;
+    String[] namemenu;
+    String[] price;
+    String[] image;
+    String[] description;
+    String[] idfood;
+    String id_nameTable;
+    String id_nameorder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_typefood8);
+        setContentView(R.layout.activity_namefood);
 
-        lv=(ListView) findViewById(R.id.typefood8);
+        Intent intent = getIntent();
+        id_nameTable = intent.getExtras().getString("id_nameTable");
+        id_nameorder = intent.getExtras().getString("id_nameorder");
+
+        final TextView name_type = (TextView) findViewById(R.id.name_type);
+        name_type.setText("Drink");
+
+        lv=(ListView) findViewById(R.id.typefood);
 
         StrictMode.setThreadPolicy((new StrictMode.ThreadPolicy.Builder().permitNetwork().build()));
 
         getdata();
 
-        adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,data);
+        CustomAdapter_namemenulist adapter = new CustomAdapter_namemenulist(getApplicationContext(), namemenu, price, image);
+
+        //adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,data);
         lv.setAdapter(adapter);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent intent = new Intent(getApplicationContext(), PopUpActivity.class);
+                intent.putExtra("namemenu",namemenu[position]);
+                intent.putExtra("price",price[position]);
+                intent.putExtra("image",image[position]);
+                intent.putExtra("description",description[position]);
+                intent.putExtra("idfood",idfood[position]);
+                intent.putExtra("id_nameTable",id_nameTable);
+                intent.putExtra("id_nameorder",id_nameorder);
+                startActivity(intent);
+            }
+        });
     }
+
 
     private void getdata()
     {
@@ -78,12 +114,19 @@ public class Typefood8Activity extends AppCompatActivity {
             JSONArray ja=new JSONArray(result);
             JSONObject jo=null;
 
-            data=new String[ja.length()];
+            namemenu=new String[ja.length()];
+            price=new String[ja.length()];
+            image=new String[ja.length()];
+            description=new String[ja.length()];
+            idfood=new String[ja.length()];
 
-            for(int i=0;i<ja.length();i++)
-            {
-                jo=ja.getJSONObject(i);
-                data[i]=jo.getString("menu_name")+" "+jo.getString("menu_size");
+            for(int i=0;i<ja.length();i++) {
+                jo = ja.getJSONObject(i);
+                namemenu[i] = jo.getString("menu_name") + " " + jo.getString("menu_size");
+                price[i] = jo.getInt("menu_price") + " ฿";
+                image[i] = jo.getString("image");
+                description[i] = jo.getString("description");
+                idfood[i] = jo.getString("id");
             }
         }
         catch(Exception e)

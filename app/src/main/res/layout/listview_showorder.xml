@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dell.sushisystem.PopUpActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_centerHorizontal="true">
+
+    <TextView
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:text="name"
+        android:layout_marginLeft="30dp"
+        android:textColor="#64dd17"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:id="@+id/name_menu"/>
+
+        <TextView
+            android:id="@+id/total_price"
+            android:layout_width="85dp"
+            android:layout_height="match_parent"
+            android:text="ราคารวม"
+            android:textAlignment="textEnd"
+            android:textColor="#64dd17"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout4"
+        android:weightSum="1"
+        android:layout_below="@+id/linear1"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:text="จำนวน"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/num"
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:text="n"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="17dp"
+            android:layout_height="match_parent"
+            android:text="x"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="152dp"
+            android:layout_height="match_parent"
+            android:text="ราคา"
+            android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/delete1_button"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:background="@drawable/bin"/>
+
+        <Button
+            android:id="@+id/note_button"
+            android:layout_width="20dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/comment"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</RelativeLayout>
